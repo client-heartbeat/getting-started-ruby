@@ -13,6 +13,13 @@
     </style>
   </head>
   <body>
+    <p>
+      <% if logged_in? %>
+        <a href='/log_out'>log out</a>
+      <% else %>
+        <a href='/log_in'>log in</a>
+      <% end %>
+    </p>
     <h1>OAuth Example</h1>
     <%= yield %>
   </body>
