@@ -31,6 +31,11 @@ module SinatraApp
       ENV['OAUTH2_CLIENT_REDIRECT_URI']
     end
 
+    def api_get(route = 'users')
+      response = access_token.get("/api/v1/#{route}.json")
+      response.body
+    end
+
     get '/' do
       erb :index
     end
@@ -49,6 +54,11 @@ module SinatraApp
       session[:access_token]  = new_token.token
       session[:refresh_token] = new_token.refresh_token
       redirect '/'
+    end
+
+    get '/api/:route' do
+      @message = api_get(params[:route])
+      erb :index
     end
 
   end
