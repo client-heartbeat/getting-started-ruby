@@ -19,6 +19,12 @@
         <a href='/api/accounts'>accounts</a>
         <a href='/api/users'>users</a>
         <a href='/api/contacts'>contacts</a>
+        <a href='/api/create_contact'>create contact</a>
+        <% if has_contact? %>
+        <span>Currently With Contact <%= session[:contact_id] %></span>
+        <a href='/api/update_contact'>update contact</a>
+        <a href='/api/delete_contact'>delete contact</a>
+        <% end %>
       <% else %>
         <a href='/log_in'>log in</a>
       <% end %>
