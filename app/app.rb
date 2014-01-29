@@ -110,8 +110,13 @@ module SinatraApp
       erb :index
     end
 
-    get '/api/contacts/:contact_id' do
-      @message = api_get("/contacts/#{params[:contact_id]}")
+    get '/api/:route/:id' do
+      @message = api_get("/#{params[:route]}/#{params[:id]}")
+      erb :index
+    end
+
+    get '/api/:route' do
+       @message = api_get("/#{params[:route]}")
       erb :index
     end
 
